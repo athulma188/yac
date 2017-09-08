@@ -6,10 +6,9 @@ Yet Another Compiler
 - else
 - for
 - while
-- +
-- -
-- *
-- /
+- \+
+- \-
+- \*
+- \/
 - %
 - =
-
