@@ -1,0 +1,4 @@
+*.lex.sml
+*.grm.sml
+*.grm.desc
+*.grm.sig
