@@ -8,4 +8,6 @@ datatype immutable = Int of int
 		  |  Float of real 
 		  | String of string
 
+datatype mutable = Var of string
+
 end
