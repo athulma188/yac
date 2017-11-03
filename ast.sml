@@ -10,4 +10,6 @@ datatype immutable = Int of int
 
 datatype mutable = Var of string
 
+datatype Spec = Break
+
 end
