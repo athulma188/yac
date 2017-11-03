@@ -12,4 +12,6 @@ datatype mutable = Var of string
 
 datatype Spec = Break
 
+datatype typev = INTEGER | FLOATV | CHAR
+		    
 end
