@@ -13,4 +13,14 @@
   | BREAK | MOD | NOT
   | INTEGER | FLOATV | CHAR 
 
+%nonterm  
+	  Prog of Ast.Exp list| Sts of Ast.Exp list
 
+
+
+
+%%
+Prog : Sts                   	(Sts)
+
+Sts : St Sts                 	(St :: Sts)
+    |                        	([])
