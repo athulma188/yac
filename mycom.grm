@@ -1,0 +1,16 @@
+%%
+%term
+    EOF 
+  | ID of string
+  | INT of int  
+  | FLOAT of real
+  | STRING of string
+  | COMMA | COLON | SEMICOLON | LPAREN | RPAREN 
+  | LBRACE | RBRACE | DOT 
+  | PLUS | MINUS | TIMES | DIVIDE | EQ | NEQ | LT | LE | GT | GE
+  | AND | OR | ASSIGN
+  | IF | ELSE | WHILE | FOR 
+  | BREAK | MOD | NOT
+  | INTEGER | FLOATV | CHAR 
+
+
