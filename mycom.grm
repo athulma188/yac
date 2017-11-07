@@ -45,7 +45,11 @@
 %eop EOF
 %noshift EOF
 %name MyC
- 
+
+%keyword WHILE BREAK IF ELSE INTEGER FLOATV CHAR
+
+%prefer ELSE
+
 %%
 Prog : Sts                   	(Sts)
 
