@@ -25,12 +25,14 @@
 	| UnRExp of Ast.Exp
 	| RelExp of Ast.Exp
 	| SumExp of Ast.Exp
+	| SumOp of Ast.Exp
 	| RelOp of Ast.BinOp
 	| Term of Ast.Exp
 	| MulOp of Ast.BinOp
 	| UnaryExp of Ast.Exp
 	| UnaryOp of Ast.UnOp
 	| Fac of Ast.Exp
+	| Constant of Ast.Exp
 	  
 %name MyC
  
@@ -93,6 +95,9 @@ RelOp :   LE 			                (Ast.LE)
 SumExp : SumExp SumOp Term	                (Ast.OpExp(SumExp,SumOp,Term))
 	| Term			                (Term)
 
+SumOp : PLUS 			                (Ast.PLUS)
+	| MINUS			                (Ast.MINUS)
+
 Term : 	Term MulOp UnaryExp	                (Ast.OpExp(Term,MulOp,UnaryExp))
 	| UnaryExp		                (UnaryExp)
 
@@ -105,4 +110,12 @@ UnaryExp: UnaryOp UnaryExp	                (Ast.UnaExp(UnaryOp,UnaryExp))
 
 UnaryOp : MINUS			                (Ast.UMINUS)
 
+Fac : 	ID			                (Ast.Variable(Ast.Var(ID)))
+	| LPAREN Exp RPAREN	                (Exp)
+	| Constant		                (Constant)
 
+Constant:  INT 			                (Ast.Const(Ast.Int(INT)))
+	| FLOAT			                (Ast.Const(Ast.Float(FLOAT)))
+	| STRING		                (Ast.Const(Ast.String(STRING)))
+
+				
