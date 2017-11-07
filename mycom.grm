@@ -54,3 +54,7 @@ TypeV :   INTEGER 				(Ast.INTEGER)
 SelSt :   IF LPAREN SimExp RPAREN St 		(Ast.IfExp(SimExp,St,Ast.NilExp))
 	| IF LPAREN SimExp RPAREN St ELSE St 	(Ast.IfExp(SimExp,St1,St2))
 						
+ExpSt : Exp SEMICOLON		                (Exp)
+      | SEMICOLON		                (Ast.NilExp)
+
+						
