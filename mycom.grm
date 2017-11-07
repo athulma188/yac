@@ -14,7 +14,9 @@
   | INTEGER | FLOATV | CHAR 
 
 %nonterm  
-	  Prog of Ast.Exp list| Sts of Ast.Exp list
+	  Prog of Ast.Exp list| Sts of Ast.Exp list 
+	| St of Ast.Exp | ExpSt of Ast.Exp | ComSt of Ast.Exp | SelSt of Ast.Exp | ItSt of Ast.Exp | SpcSt of Ast.Exp 
+	| Decl of Ast.Exp 
 
 
 
