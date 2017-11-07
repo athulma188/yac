@@ -23,6 +23,7 @@
 	| SimExp of Ast.Exp
 	| AndExp of Ast.Exp
 	| UnRExp of Ast.Exp
+	| RelExp of Ast.Exp
 %name MyC
  
 %%
@@ -68,3 +69,5 @@ SimExp : SimExp OR AndExp	                (Ast.OpExp(SimExp,Ast.OR,AndExp))
 AndExp : AndExp AND UnRExp 	                (Ast.OpExp(AndExp,Ast.AND,UnRExp))   
        | UnRExp			                (UnRExp)
 						
+UnRExp : NOT UnRExp		                (Ast.UnaExp(Ast.NOT,UnRExp))
+       | RelExp			                (RelExp)
