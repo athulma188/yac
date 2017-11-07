@@ -10,7 +10,7 @@
   | PLUS | MINUS | TIMES | DIVIDE | EQ | NEQ | LT | LE | GT | GE
   | AND | OR | ASSIGN
   | IF | ELSE | WHILE | FOR 
-  | BREAK | MOD | NOT
+  | BREAK | CONTINUE | MOD | NOT
   | INTEGER | FLOATV | CHAR 
 
 %nonterm  
