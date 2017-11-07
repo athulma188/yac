@@ -18,7 +18,7 @@
 	| St of Ast.Exp | ExpSt of Ast.Exp | ComSt of Ast.Exp | SelSt of Ast.Exp | ItSt of Ast.Exp | SpcSt of Ast.Exp 
 	| Decl of Ast.Exp 
 	| TypeV of Ast.typev  
-
+	| SimExp of Ast.Exp 
 
 
 %name MyC
@@ -50,4 +50,7 @@ Decl : TypeV ID SEMICOLON			(Ast.Declr(TypeV,Ast.Var(ID)))
 TypeV :   INTEGER 				(Ast.INTEGER)
 	| FLOATV				(Ast.FLOATV)
 	| CHAR					(Ast.CHAR)
-	     
+
+SelSt :   IF LPAREN SimExp RPAREN St 		(Ast.IfExp(SimExp,St,Ast.NilExp))
+	| IF LPAREN SimExp RPAREN St ELSE St 	(Ast.IfExp(SimExp,St1,St2))
+						
