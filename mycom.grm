@@ -18,7 +18,9 @@
 	| St of Ast.Exp | ExpSt of Ast.Exp | ComSt of Ast.Exp | SelSt of Ast.Exp | ItSt of Ast.Exp | SpcSt of Ast.Exp 
 	| Decl of Ast.Exp 
 	| TypeV of Ast.typev  
-	| SimExp of Ast.Exp 
+	| SimExp of Ast.Exp
+	| Exp of Ast.Exp
+	| SimExp of Ast.Exp
 
 
 %name MyC
@@ -57,4 +59,6 @@ SelSt :   IF LPAREN SimExp RPAREN St 		(Ast.IfExp(SimExp,St,Ast.NilExp))
 ExpSt : Exp SEMICOLON		                (Exp)
       | SEMICOLON		                (Ast.NilExp)
 
+Exp : ID ASSIGN Exp		                (Ast.AssignExp(Ast.Var(ID),Exp))
+    | SimExp			                (SimExp)
 						
