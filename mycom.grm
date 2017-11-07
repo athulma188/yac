@@ -18,7 +18,8 @@
 
 
 
-
+%name MyC
+ 
 %%
 Prog : Sts                   	(Sts)
 
