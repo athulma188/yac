@@ -25,3 +25,10 @@ Prog : Sts                   	(Sts)
 
 Sts : St Sts                 	(St :: Sts)
     |                        	([])
+
+St : ExpSt 			(ExpSt)
+   | ComSt			(ComSt)
+   | SelSt			(SelSt)
+   | ItSt                    	(ItSt)
+   | SpcSt                   	(SpcSt)
+   | Decl			(Decl)
