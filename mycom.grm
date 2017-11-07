@@ -40,3 +40,5 @@ SpcSt : BREAK SEMICOLON				(Ast.SpecExp(Ast.Break))
 
 ItSt : WHILE LPAREN SimExp RPAREN St 		(Ast.WhileExp(SimExp,St))
 		 
+Decl : TypeV ID SEMICOLON			(Ast.Declr(TypeV,Ast.Var(ID)))
+     | TypeV ID ASSIGN Exp SEMICOLON 		(Ast.DecAss(TypeV, Ast.Var(ID),Exp))
