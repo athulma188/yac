@@ -24,6 +24,8 @@
 	| AndExp of Ast.Exp
 	| UnRExp of Ast.Exp
 	| RelExp of Ast.Exp
+	| SumExp of Ast.Exp
+	| RelOp of Ast.BinOp
 %name MyC
  
 %%
@@ -71,3 +73,7 @@ AndExp : AndExp AND UnRExp 	                (Ast.OpExp(AndExp,Ast.AND,UnRExp))
 						
 UnRExp : NOT UnRExp		                (Ast.UnaExp(Ast.NOT,UnRExp))
        | RelExp			                (RelExp)
+
+RelExp : SumExp RelOp SumExp  	                (Ast.OpExp(SumExp1,RelOp,SumExp2))
+	| SumExp		                (SumExp)
+						
