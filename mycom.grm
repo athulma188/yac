@@ -17,6 +17,7 @@
 	  Prog of Ast.Exp list| Sts of Ast.Exp list 
 	| St of Ast.Exp | ExpSt of Ast.Exp | ComSt of Ast.Exp | SelSt of Ast.Exp | ItSt of Ast.Exp | SpcSt of Ast.Exp 
 	| Decl of Ast.Exp 
+	| TypeV of Ast.typev  
 
 
 
@@ -44,3 +45,9 @@ ItSt : WHILE LPAREN SimExp RPAREN St 		(Ast.WhileExp(SimExp,St))
 		 
 Decl : TypeV ID SEMICOLON			(Ast.Declr(TypeV,Ast.Var(ID)))
      | TypeV ID ASSIGN Exp SEMICOLON 		(Ast.DecAss(TypeV, Ast.Var(ID),Exp))
+
+
+TypeV :   INTEGER 				(Ast.INTEGER)
+	| FLOATV				(Ast.FLOATV)
+	| CHAR					(Ast.CHAR)
+	     
