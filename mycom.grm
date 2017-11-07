@@ -34,4 +34,7 @@ St : ExpSt 			(ExpSt)
    | Decl			(Decl)
 
 ComSt : LBRACE Sts RBRACE 			(Ast.CompSt(Sts))
-				
+
+SpcSt : BREAK SEMICOLON				(Ast.SpecExp(Ast.Break))
+      | CONTINUE SEMICOLON			(Ast.SpecExp(Ast.Continue))
+	       
