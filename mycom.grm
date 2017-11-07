@@ -34,6 +34,11 @@
 	| Fac of Ast.Exp
 	| Constant of Ast.Exp
 	  
+%pos int
+%verbose
+%start Prog
+%eop EOF
+%noshift EOF
 %name MyC
  
 %%
