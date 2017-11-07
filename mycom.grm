@@ -26,6 +26,10 @@
 	| RelExp of Ast.Exp
 	| SumExp of Ast.Exp
 	| RelOp of Ast.BinOp
+	| Term of Ast.Exp
+	| MulOp of Ast.BinOp
+	| UnaryExp of Ast.Exp
+	| UnaryOp of Ast.UnOp
 %name MyC
  
 %%
@@ -83,3 +87,14 @@ RelOp :   LE 			                (Ast.LE)
 	| GE			                (Ast.GE)
 	| EQ			                (Ast.EQ)
 	| NEQ			                (Ast.NEQ)
+
+SumExp : SumExp SumOp Term	                (Ast.OpExp(SumExp,SumOp,Term))
+	| Term			                (Term)
+
+Term : 	Term MulOp UnaryExp	(Ast.OpExp(Term,MulOp,UnaryExp))
+	| UnaryExp		(UnaryExp)
+
+MulOp : TIMES			(Ast.TIMES)
+	| DIVIDE		(Ast.DIVIDE)
+	| MOD			(Ast.MOD)
+				
