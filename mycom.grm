@@ -21,7 +21,7 @@
 	| SimExp of Ast.Exp
 	| Exp of Ast.Exp
 	| SimExp of Ast.Exp
-
+	| AndExp of Ast.Exp
 
 %name MyC
  
@@ -62,3 +62,5 @@ ExpSt : Exp SEMICOLON		                (Exp)
 Exp : ID ASSIGN Exp		                (Ast.AssignExp(Ast.Var(ID),Exp))
     | SimExp			                (SimExp)
 						
+SimExp : SimExp OR AndExp	                (Ast.OpExp(SimExp,Ast.OR,AndExp))
+       | AndExp			                (AndExp)
