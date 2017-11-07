@@ -32,3 +32,6 @@ St : ExpSt 			(ExpSt)
    | ItSt                    	(ItSt)
    | SpcSt                   	(SpcSt)
    | Decl			(Decl)
+
+ComSt : LBRACE Sts RBRACE 			(Ast.CompSt(Sts))
+				
