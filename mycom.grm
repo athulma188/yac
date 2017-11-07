@@ -22,7 +22,7 @@
 	| Exp of Ast.Exp
 	| SimExp of Ast.Exp
 	| AndExp of Ast.Exp
-
+	| UnRExp of Ast.Exp
 %name MyC
  
 %%
@@ -64,3 +64,7 @@ Exp : ID ASSIGN Exp		                (Ast.AssignExp(Ast.Var(ID),Exp))
 						
 SimExp : SimExp OR AndExp	                (Ast.OpExp(SimExp,Ast.OR,AndExp))
        | AndExp			                (AndExp)
+
+AndExp : AndExp AND UnRExp 	                (Ast.OpExp(AndExp,Ast.AND,UnRExp))   
+       | UnRExp			                (UnRExp)
+						
