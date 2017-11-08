@@ -12,6 +12,8 @@ fun parse filename =
       val file = TextIO.openIn filename
       fun get _ = TextIO.input file
       val lexer = LrParser.Stream.streamify(Lex.makeLexer get)
+      fun parseerror(s,p1,p2) = (print ("Error! "^ s ^"\t" ^ (Int.toString p1) ^ " " ^(Int.toString p2)^"\n"));
+	  
   in
       TextIO.closeIn file;
   end
