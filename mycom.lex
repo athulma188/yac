@@ -45,6 +45,7 @@ fun eof() = let val pos = hd(!linePos) in Tokens.EOF(pos,pos) end
 "char"   =>(Tokens.CHAR(yypos,yypos+4));
 {digits}=> (Tokens.INT(Option.getOpt(Int.fromString yytext,0),yypos,yypos+size yytext));
 [digits]\.[digits] => (Tokens.FLOAT(Option.getOpt(Real.fromString yytext,0),yypos,yypos+size yytext));
+[a-z][a-z0-9]* => (Tokens.ID(yytext,yypos,yypos+size yytext));
 
 
 
