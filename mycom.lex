@@ -28,4 +28,7 @@ fun eof() = let val pos = hd(!linePos) in Tokens.EOF(pos,pos) end
 "<="    => (Tokens.LE(yypos,yypos+2));
 "<"     => (Tokens.LT(yypos,yypos+1));
 "!="    => (Tokens.NEQ(yypos,yypos+2));
+";"     => (Tokens.SEMICOLON(yypos,yypos+1));
+"="    => (Tokens.ASSIGN(yypos,yypos+2));
+
 
