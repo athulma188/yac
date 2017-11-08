@@ -46,6 +46,11 @@
 %noshift EOF
 %name MyC
 
+%left OR
+%left AND
+%left PLUS MINUS
+%left TIMES DIVIDE
+
 %keyword WHILE BREAK IF ELSE INTEGER FLOATV CHAR
 
 %prefer ELSE
