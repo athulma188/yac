@@ -22,4 +22,10 @@ fun eof() = let val pos = hd(!linePos) in Tokens.EOF(pos,pos) end
 ","     => (Tokens.COMMA(yypos,yypos+1));
 "&&"    => (Tokens.AND(yypos,yypos+1));
 "||"    => (Tokens.OR(yypos,yypos+1));
+"=="    => (Tokens.EQ(yypos,yypos+1));
+">="    => (Tokens.GE(yypos,yypos+2));
+">"     => (Tokens.GT(yypos,yypos+1));
+"<="    => (Tokens.LE(yypos,yypos+2));
+"<"     => (Tokens.LT(yypos,yypos+1));
+"!="    => (Tokens.NEQ(yypos,yypos+2));
 
