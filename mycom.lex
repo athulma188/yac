@@ -13,4 +13,9 @@ fun eof() = let val pos = hd(!linePos) in Tokens.EOF(pos,pos) end
   digits=[0-9]+;
 %header (functor MyCLexFun (structure Tokens:MyC_TOKENS));
 
-
+%%
+"+"     => (Tokens.PLUS(yypos,yypos+1));
+"-"     => (Tokens.MINUS(yypos,yypos+1));
+"*"     => (Tokens.TIMES(yypos,yypos+1));
+"/"     => (Tokens.DIVIDE(yypos,yypos+1));
+"%"     => (Tokens.MOD(yypos,yypos+1));
