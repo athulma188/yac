@@ -46,6 +46,9 @@ fun eof() = let val pos = hd(!linePos) in Tokens.EOF(pos,pos) end
 {digits}=> (Tokens.INT(Option.getOpt(Int.fromString yytext,0),yypos,yypos+size yytext));
 [digits]\.[digits] => (Tokens.FLOAT(Option.getOpt(Real.fromString yytext,0),yypos,yypos+size yytext));
 [a-z][a-z0-9]* => (Tokens.ID(yytext,yypos,yypos+size yytext));
+"\n"	=> (lineNum := !lineNum+1; linePos := yypos :: !linePos; continue());
+" "   => (continue());
+"\t"   => (continue());
 
 
 
