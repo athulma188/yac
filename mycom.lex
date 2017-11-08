@@ -20,6 +20,7 @@ fun eof() = let val pos = hd(!linePos) in Tokens.EOF(pos,pos) end
 "/"     => (Tokens.DIVIDE(yypos,yypos+1));
 "%"     => (Tokens.MOD(yypos,yypos+1));
 ","     => (Tokens.COMMA(yypos,yypos+1));
+"!"     => (Tokens.NOT(yypos,yypos+1));
 "&&"    => (Tokens.AND(yypos,yypos+1));
 "||"    => (Tokens.OR(yypos,yypos+1));
 "=="    => (Tokens.EQ(yypos,yypos+1));
@@ -44,7 +45,7 @@ fun eof() = let val pos = hd(!linePos) in Tokens.EOF(pos,pos) end
 "float"   =>(Tokens.FLOATV(yypos,yypos+5));
 "char"   =>(Tokens.CHAR(yypos,yypos+4));
 {digits}=> (Tokens.INT(Option.getOpt(Int.fromString yytext,0),yypos,yypos+size yytext));
-[digits]\.[digits] => (Tokens.FLOAT(Option.getOpt(Real.fromString yytext,0),yypos,yypos+size yytext));
+[digits]\.[digits] => (Tokens.FLOAT(Option.getOpt(Math.fromString yytext,0),yypos,yypos+size yytext));
 [a-z][a-z0-9]* => (Tokens.ID(yytext,yypos,yypos+size yytext));
 "\n"	=> (lineNum := !lineNum+1; linePos := yypos :: !linePos; continue());
 " "   => (continue());
