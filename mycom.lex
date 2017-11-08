@@ -49,6 +49,7 @@ fun eof() = let val pos = hd(!linePos) in Tokens.EOF(pos,pos) end
 "\n"	=> (lineNum := !lineNum+1; linePos := yypos :: !linePos; continue());
 " "   => (continue());
 "\t"   => (continue());
+.       => (print("illegal character " ^ yytext^ " at " ^ (Int.toString yypos) ^ "\n"); continue());
 
 
 
