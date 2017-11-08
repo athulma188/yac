@@ -30,7 +30,7 @@
 	| UnRExp of Ast.Exp
 	| RelExp of Ast.Exp
 	| SumExp of Ast.Exp
-	| SumOp of Ast.Exp
+	| SumOp of Ast.BinOp
 	| RelOp of Ast.BinOp
 	| Term of Ast.Exp
 	| MulOp of Ast.BinOp
