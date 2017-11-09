@@ -18,6 +18,14 @@ and compileExp (Ast.Const(x)) = (case x of
 				   Ast.Break => "break;\n"
 				| Ast.Continue => "continue;\n"
 			    )
+  | compileExp (Ast.IfExp(x,y,z)) = let val elsepart = (compileExp z)
+				    in
+					if elsepart = ""
+					then
+					    "if (" ^ (compileExp x) ^ ")\n{\n" ^ (compileExp y) ^ "}\n"
+					else
+					    "if (" ^ (compileExp x) ^ ")\n{\n" ^ (compileExp y) ^ "}\nelse\n{\n"^elsepart^"}\n"
+				    end
 				
 		     
 end
