@@ -60,5 +60,10 @@ and compileExp (Ast.Const(x)) = (case x of
   | compileExp (Ast.FunDecl(x,Ast.Fun(y),z,w)) =  "function " ^ y ^ "("^(compileParam z)^")\n{\n"^(compileExp w)^"}\n"
   | compileExp (Ast.Param(x,Ast.Var(y))) = "var " ^ y
 				
+and compileParam (x::xs) = if List.null xs
+			   then
+			       (compileExp x)
+			   else
+			       (compileExp x) ^ ", "^ (compileParam xs)
 		     
 end
