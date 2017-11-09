@@ -56,6 +56,9 @@ and compileExp (Ast.Const(x)) = (case x of
 			     )		 
 
   | compileExp (Ast.NilExp) = "" 
+
+  | compileExp (Ast.FunDecl(x,Ast.Fun(y),z,w)) =  "function " ^ y ^ "("^(compileParam z)^")\n{\n"^(compileExp w)^"}\n"
+  | compileExp (Ast.Param(x,Ast.Var(y))) = "var " ^ y
 				
 		     
 end
