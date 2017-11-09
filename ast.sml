@@ -9,13 +9,17 @@ datatype immutable = Int of int
 		  | String of string
 		  | Char of string
 
-datatype mutable = Var of string
+datatype mutable = Var of string | Fun of string
 
 datatype Spec = Break | Continue
 
 datatype typev = INTEGER | FLOATV | CHAR
-
+	       
 datatype Exp = NilExp
+	      |EmptySt
+ 	      |FunDecl of typev * mutable * Exp list * Exp
+	      |Declr of typev * mutable
+	      |DecAss of typev * mutable * Exp	       
 	      |Const of immutable
 	      |Variable of mutable
 	      |AssignExp of mutable * Exp
@@ -23,9 +27,7 @@ datatype Exp = NilExp
 	      |IfExp of Exp * Exp * Exp
 	      |CompSt of Exp list
 	      |WhileExp of Exp * Exp
-	      |Declr of typev * mutable
-	      |DecAss of typev * mutable * Exp
 	      |OpExp  of Exp * BinOp * Exp
 	      |UnaExp of UnOp * Exp
-
+	      |Param of typev * mutable
 end

@@ -39,6 +39,12 @@
 	| UnaryOp of Ast.UnOp
 	| Fac of Ast.Exp
 	| Constant of Ast.Exp
+	| Decls of Ast.Exp list
+	| Params of  Ast.Exp list
+	| ParamList of Ast.Exp list
+	| Param of Ast.Exp
+	| VarDecl of Ast.Exp
+	| FunDecl of Ast.Exp
 	  
 %pos int
 %verbose
@@ -57,8 +63,9 @@
 %prefer ELSE
 
 %%
-Prog : Sts                   	(Sts)
+Prog : Decls                   	(Decls)
 
+				
 Sts : St Sts                 	(St :: Sts)
     |                        	([])
 
@@ -75,11 +82,27 @@ SpcSt : BREAK SEMICOLON				(Ast.SpecExp(Ast.Break))
       | CONTINUE SEMICOLON			(Ast.SpecExp(Ast.Continue))
 
 ItSt : WHILE LPAREN SimExp RPAREN St 		(Ast.WhileExp(SimExp,St))
-		 
-Decl : TypeV ID SEMICOLON			(Ast.Declr(TypeV,Ast.Var(ID)))
-     | TypeV ID ASSIGN Exp SEMICOLON 		(Ast.DecAss(TypeV, Ast.Var(ID),Exp))
 
+Decls: Decl Decls                               (Decl::Decls)
+     |                                          ([])
+	    
+Decl : VarDecl                                  (VarDecl)
+     | FunDecl                                  (FunDecl)
+  					
+VarDecl: TypeV ID SEMICOLON			(Ast.Declr(TypeV,Ast.Var(ID)))
+       | TypeV ID ASSIGN Exp SEMICOLON 		(Ast.DecAss(TypeV, Ast.Var(ID),Exp))
 
+FunDecl: TypeV ID LPAREN Params RPAREN St        (Ast.FunDecl(TypeV,Ast.Fun(ID),Params,St)) 
+      
+
+Params : ParamList                              (ParamList)
+       |                                        ([])
+						    
+ParamList : Param COMMA ParamList               (Param::ParamList)
+	  | Param                               ([Param])
+							    
+Param : TypeV ID                                (Ast.Param(TypeV,Ast.Var(ID)))  
+						    
 TypeV :   INTEGER 				(Ast.INTEGER)
 	| FLOATV				(Ast.FLOATV)
 	| CHAR					(Ast.CHAR)
