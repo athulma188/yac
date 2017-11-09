@@ -5,6 +5,7 @@
   | INT of int  
   | FLOAT of real
   | STRING of string
+  | CHARC of string
   | COMMA | COLON | SEMICOLON | LPAREN | RPAREN 
   | LBRACE | RBRACE | DOT 
   | PLUS | MINUS | TIMES | DIVIDE | EQ | NEQ | LT | LE | GT | GE
@@ -135,6 +136,7 @@ Fac : 	ID			                (Ast.Variable(Ast.Var(ID)))
 
 Constant:  INT 			                (Ast.Const(Ast.Int(INT)))
 	| FLOAT			                (Ast.Const(Ast.Float(FLOAT)))
+	| CHARC                                 (Ast.Const(Ast.Char(CHARC)))
 	| STRING		                (Ast.Const(Ast.String(STRING)))
 
 				

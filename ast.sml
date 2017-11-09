@@ -7,6 +7,7 @@ datatype UnOp = UMINUS | NOT
 datatype immutable = Int of int 
 		  |  Float of real 
 		  | String of string
+		  | Char of string
 
 datatype mutable = Var of string
 
