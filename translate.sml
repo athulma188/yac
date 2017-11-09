@@ -26,6 +26,36 @@ and compileExp (Ast.Const(x)) = (case x of
 					else
 					    "if (" ^ (compileExp x) ^ ")\n{\n" ^ (compileExp y) ^ "}\nelse\n{\n"^elsepart^"}\n"
 				    end
+  | compileExp (Ast.CompSt(x)) = (compile x)
+			       
+  | compileExp (Ast.WhileExp (x,y)) = "while (" ^ (compileExp x) ^")\n{\n" ^  (compileExp y) ^"}\n"
+				    
+  | compileExp (Ast.Declr(x,Ast.Var(y))) = "var "^y^";\n"
+				
+  | compileExp (Ast.DecAss(x,Ast.Var(y),z)) = "var "^y^" = "^(compileExp z)^";\n"
+				
+  | compileExp (Ast.OpExp(x,y,z)) =  (case y of
+				    Ast.PLUS =>  (compileExp x) ^ "+" ^ (compileExp z)
+				   | Ast.MINUS => (compileExp x) ^ "-" ^ (compileExp z)
+				   | Ast.TIMES => (compileExp x) ^ "*" ^ (compileExp z)
+				   | Ast.DIVIDE => (compileExp x) ^ "/" ^ (compileExp z)
+				   | Ast.MOD => (compileExp x) ^ "%" ^ (compileExp z)
+				   | Ast.AND => (compileExp x) ^ "&&" ^ (compileExp z)
+				   | Ast.OR => (compileExp x) ^ "||" ^ (compileExp z)
+				   | Ast.EQ => (compileExp x) ^ "==" ^ (compileExp z)
+				   | Ast.NEQ => (compileExp x) ^ "!=" ^ (compileExp z)
+				   | Ast.GE => (compileExp x) ^ ">=" ^ (compileExp z)
+				   | Ast.LE => (compileExp x) ^ "<=" ^ (compileExp z)
+				   | Ast.LT => (compileExp x) ^ "<" ^ (compileExp z)
+				   | Ast.GT => (compileExp x) ^ ">" ^ (compileExp z)
+			       )
+			
+  | compileExp (Ast.UnaExp(x,y)) = (case  x of
+				  Ast.UMINUS => "-" ^ (compileExp y)
+				| Ast.NOT => "!"^ (compileExp y)
+			     )		 
+
+  | compileExp (Ast.NilExp) = "" 
 				
 		     
 end
