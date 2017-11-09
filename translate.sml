@@ -1,0 +1,3 @@
+structure Translate =
+struct
+end
