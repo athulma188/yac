@@ -1,5 +1,6 @@
 # yac
 Yet Another Compiler
+A compiler from C Subset to Javascript
 
 ## Subset of C language
 - if
