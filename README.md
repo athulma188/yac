@@ -2,6 +2,13 @@
 Yet Another Compiler  
 A compiler from C Subset to Javascript
 
+## How to compile the code
+1. Compile 'mycom.grm' file using 'mlyacc mycom.grm'
+2. Compile 'mycom.lex' file using 'mllex mycom.lex'
+3. Run myC.mlb using 'mlton myC.mlb'
+4. Run the output executable file. (./myC test1.c) 
+The output would be in out.js file
+
 ## Subset of C language
 - Control statements (if, else, break, continue)
 - Loop (while)
