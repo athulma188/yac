@@ -12,7 +12,7 @@
   | AND | OR | ASSIGN
   | IF | ELSE | WHILE | FOR 
   | BREAK | CONTINUE | MOD | NOT
-  | INTEGER | FLOATV | CHAR | RETURN
+  | INTEGER | FLOATV | CHAR | RETURN | PRINT
    
 %nonterm  
 	  Prog of Ast.Exp list
@@ -94,6 +94,7 @@ Id : ID                                         (Ast.Var(ID))
 SpcSt : BREAK SEMICOLON				(Ast.SpecExp(Ast.Break))
       | CONTINUE SEMICOLON			(Ast.SpecExp(Ast.Continue))
       | RETURN ID SEMICOLON                     (Ast.SpecExp(Ast.Return(Ast.Var(ID))))
+      | PRINT LPAREN ID RPAREN SEMICOLON        (Ast.SpecExp(Ast.Print(Ast.Var(ID))))
 ItSt : WHILE LPAREN SimExp RPAREN St 		(Ast.WhileExp(SimExp,St))
 
 Decls: Decl Decls                               (Decl::Decls)

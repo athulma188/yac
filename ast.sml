@@ -11,8 +11,7 @@ datatype immutable = Int of int
 
 datatype mutable = Var of string 
 datatype funName = Fun of string
-datatype Spec = Break | Continue | Return of mutable 
-
+datatype Spec = Break | Continue | Return of mutable | Print of mutable
 datatype typev = INTEGER | FLOATV | CHAR
 	       
 datatype Exp = NilExp
