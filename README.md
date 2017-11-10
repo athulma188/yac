@@ -10,7 +10,7 @@ Yet Another Compiler
 - Assignment operator(=)
 - Relational Operators(<, >, <=, >=, ==)
 - Function defenitions
-- 
+- Types(Int, Float, Char)
 ## File Descriptions
 
 ### ast.sml
