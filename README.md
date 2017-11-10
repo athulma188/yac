@@ -1,14 +1,16 @@
 # yac
 Yet Another Compiler
 
-## Subset
+## Subset of C language
 - if
 - else
-- for
 - while
-- \+
-- \-
-- \*
-- \/
-- %
-- =
+- Arithmetic operators(\+,\-,\*,\/,%)
+- Logical operators(&&,||)
+- Assignment operator(=)
+- Relational Operators(<,>,<=,>=,==)
+- Function defenitions
+- 
+## File Descriptions
+
+### 
