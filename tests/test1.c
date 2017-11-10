@@ -1,32 +1,19 @@
-int f (int a)
+int x = 1;
+int f (int a, int b)
 {
-  if (x == " str")
-    if (x>1)
-      x = 1;
+  int x;
+  if (a % 2 == 0)
+      x = a;
     else
-      x = 2;
+      x = a+1;
   
-
-  x = (5 + 2 % 3 - 4 * 1 );
-
-
-  if (x == 2)
+  int i = 0;
+  int sum = 0;
+  while (i < x)
     {
-      x = 2;
-    }
-  if (x==1)
-    {
-      u =1;
+      sum = sum + b;
+      i = i + 1;
     }
   
-  while (x > 1)
-    {
-      x = x + 2;
-    }
-  
-  f(x);
-  
-  return x;
+  return sum;
 }
-int x = 2;
-
