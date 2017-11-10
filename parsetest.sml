@@ -23,6 +23,6 @@ fun parse() =
       val (absyn, _) = MyCP.parse(0,lexer,parseerror,())
   in
       absyn
-  end
+  end handle LrParser.ParseError => []
 
 end
