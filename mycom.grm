@@ -45,7 +45,10 @@
 	| Param of Ast.Exp
 	| VarDecl of Ast.Exp
 	| FunDecl of Ast.Exp
-	  
+	| FunCall of Ast.Exp
+	| Ids of Ast.mutable list
+	| IdList of Ast.mutable list
+	| Id of Ast.mutable 
 %pos int
 %verbose
 %start Prog
@@ -75,9 +78,20 @@ St : ExpSt 			(ExpSt)
    | ItSt                    	(ItSt)
    | SpcSt                   	(SpcSt)
    | Decl			(Decl)
-
+   | FunCall                    (FunCall)
 ComSt : LBRACE Sts RBRACE 			(Ast.CompSt(Sts))
 
+FunCall: ID LPAREN Ids RPAREN SEMICOLON         (Ast.FunCall(Ast.Fun(ID),Ids))
+
+
+Ids : IdList                                    (IdList)
+       |                                        ([])
+						    
+IdList : Id COMMA IdList                        (Id::IdList)
+	  | Id                                  ([Id])
+							    
+Id : ID                                         (Ast.Var(ID))
+		    
 SpcSt : BREAK SEMICOLON				(Ast.SpecExp(Ast.Break))
       | CONTINUE SEMICOLON			(Ast.SpecExp(Ast.Continue))
       | RETURN ID SEMICOLON                     (Ast.SpecExp(Ast.Return(Ast.Var(ID))))
