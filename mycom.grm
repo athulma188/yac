@@ -78,10 +78,9 @@ St : ExpSt 			(ExpSt)
    | ItSt                    	(ItSt)
    | SpcSt                   	(SpcSt)
    | Decl			(Decl)
-   | FunCall                    (FunCall)
 ComSt : LBRACE Sts RBRACE 			(Ast.CompSt(Sts))
 
-FunCall: ID LPAREN Ids RPAREN SEMICOLON         (Ast.FunCall(Ast.Fun(ID),Ids))
+FunCall: ID LPAREN Ids RPAREN                   (Ast.FunCall(Ast.Fun(ID),Ids))
 
 
 Ids : IdList                                    (IdList)
@@ -129,6 +128,8 @@ ExpSt : Exp SEMICOLON		                (Exp)
 
 Exp : ID ASSIGN Exp		                (Ast.AssignExp(Ast.Var(ID),Exp))
     | SimExp			                (SimExp)
+    | FunCall                                   (FunCall)
+
 						
 SimExp : SimExp OR AndExp	                (Ast.OpExp(SimExp,Ast.OR,AndExp))
        | AndExp			                (AndExp)
