@@ -55,7 +55,7 @@
 
 %left OR
 %left AND
-%left PLUS MINUS
+%left PLUS MINUS MOD
 %left TIMES DIVIDE
 
 %keyword WHILE BREAK IF ELSE INTEGER FLOATV CHAR
