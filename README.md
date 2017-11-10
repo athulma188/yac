@@ -40,3 +40,6 @@ Driver program. Join lex and yacc files. Initiates parsing.
 ### translate.sml
 Converts the ast to javascript code.
 
+## Notes
+- print and return can support only with single variable.
+- usage of print :  print(*variable*); 

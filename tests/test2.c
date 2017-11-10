@@ -10,6 +10,7 @@ int fac(int n)
     int out;
     int parm = n -1;
     out = fac(parm);
+    out = n * out;
     return out;
   }
 }
