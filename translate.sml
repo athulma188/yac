@@ -18,6 +18,7 @@ and compileExp (Ast.Const(x)) = (case x of
 				   Ast.Break => "break;\n"
 				    | Ast.Continue => "continue;\n"
 				    | Ast.Return(Ast.Var(y)) => "return "^ y^";\n"
+				    | Ast.Print(Ast.Var(y)) => "console.log("^y^");\n" 
 			    )
   | compileExp (Ast.IfExp(x,y,z)) = let val elsepart = (compileExp z)
 				    in
