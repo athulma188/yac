@@ -1,17 +1,18 @@
 # yac
-Yet Another Compiler
+Yet Another Compiler  
 A compiler from C Subset to Javascript
 
 ## Subset of C language
-- if
-- else
-- while
+- Control statements (if, else, break, continue)
+- Loop (while)
+- Variables 
 - Arithmetic operators(\+, \-, \*, \/, %)
 - Logical operators(&&, ||)
 - Assignment operator(=)
 - Relational Operators(<, >, <=, >=, ==)
 - Function defenitions
-- Types(Int, Float, Char)
+- Types(Int, Float, Char) 
+
 ## File Descriptions
 
 ### ast.sml
